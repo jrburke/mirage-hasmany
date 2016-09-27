@@ -1,0 +1,13 @@
+<h2>{{model.name}}</h2>
+
+<ul>
+    {{#each model.books as |book|}}
+        <li>{{book.name}}</li>
+    {{/each}}
+</ul>
+
+{{#link-to 'counties.library.book.new' model}}
+    New book
+{{/link-to}}
+
+{{outlet}}

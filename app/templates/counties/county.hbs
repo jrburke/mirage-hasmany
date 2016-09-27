@@ -1,0 +1,11 @@
+<h2>{{model.name}}</h2>
+
+<ul>
+    {{#each model.libraries as |library|}}
+        <li>{{#link-to 'counties.library' library}}
+            {{library.name}}
+        {{/link-to}}</li>
+    {{/each}}
+</ul>
+
+{{outlet}}
