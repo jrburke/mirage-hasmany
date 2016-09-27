@@ -22,3 +22,7 @@ and try to add a book.
 When clicking the `Add book` button, the book is seen temporarily on the page, but once the `library.save()` method finishes, it disappears.
 
 This seems to happen because the PATCH for the `library` does not update the `books` relationship to account for the new `book`.
+
+## Issue tracking
+
+https://github.com/samselikoff/ember-cli-mirage/issues/904
