@@ -1,53 +1,24 @@
 # Mirage-hasmany
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A test of an ember-cli-mirage setup where the `library` model hasMany `book`s, but the `book` model does not belongTo `library`.
 
-## Prerequisites
+The issue is how to save a new book such that it is seen as attached to the library.
 
-You will need the following things properly installed on your computer.
+## Setup
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+Assumes ember-cli 2.8.x.
 
-## Installation
+```
+npm install && bower install
+ember serve
+```
 
-* `git clone <repository-url>` this repository
-* `cd mirage-hasmany`
-* `npm install`
-* `bower install`
+To try out the issue, go to:
 
-## Running / Development
+http://localhost:4200/counties/library/1/book/new
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+and try to add a book.
 
-### Code Generators
+When clicking the `Add book` button, the book is seen temporarily on the page, but once the `library.save()` method finishes, it disappears.
 
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+This seems to happen because the PATCH for the `library` does not update the `books` relationship to account for the new `book`.
